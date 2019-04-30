@@ -18,6 +18,8 @@ set_property(TARGET m_obj PROPERTY POSITION_INDEPENDENT_CODE 1)
 add_library(s_objs OBJECT s1.c s2.c)
 set_property(TARGET s_objs PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-# Build the shared and static version of s
+# Build the shared and static version of s as `libs.so` and `libs.a`
 add_library(s_shared SHARED $<TARGET_OBJECTS:s_objs>)
+set_target_properties(s_shared PROPERTIES OUTPUT_NAME "s")
 add_library(s_static STATIC $<TARGET_OBJECTS:s_objs>)
+set_target_properties(s_static PROPERTIES OUTPUT_NAME "s")
